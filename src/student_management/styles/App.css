@@ -1,0 +1,32 @@
+* {
+  font-size: large;
+}
+
+body {
+  margin: 0px;
+}
+
+.brand {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.box {
+  display: flex;
+  gap: 20px;
+}
+
+.header {
+  flex: 2;
+}
+
+.table {
+  flex: 10;
+}
+
+.btnBox {
+  display: flex;
+  gap: 20px;
+}
