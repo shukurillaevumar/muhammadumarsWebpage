@@ -4,22 +4,19 @@ import TableComp from './Components/TableComp';
 import './styles/App.css';
 
 
-const SmsApp = (id) => {
-    const [students, setStudent] = useState([
-        {id: 1, name: "Muhammadumar", classNum: 3, phone: "998 97 006 96 56", birthDate: "27.04.2008"},
-        {id: 2, name: "Muhammadumar", classNum: 3, phone: "998 97 006 96 56", birthDate: "27.04.2008"},
-        {id: 3, name: "Muhammadumar", classNum: 3, phone: "998 97 006 96 56", birthDate: "27.04.2008"}
-    ]);
+const SmsApp = () => {
+    const [students, setStudent] = useState(JSON.parse(localStorage.getItem("students")));
+
+    localStorage.setItem("Student", JSON.stringify(students));
 
     function addStudent (user) {
-        setStudent((prev) => {
-            return [...prev, user]
-        })
-        
+        const updDB = [...students, user];
+        localStorage.setItem("students", JSON.stringify(updDB));
+        setStudent(JSON.parse(localStorage.getItem("students")));
     }
 
-    function removeStudent () {
-        console.log(`Student ${id} is removed`)
+    function removeStudent (id) {
+        setStudent(students.filter((student) => student.id !== id));
     }
 
     return (
