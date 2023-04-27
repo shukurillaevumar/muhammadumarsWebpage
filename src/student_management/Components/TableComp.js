@@ -27,10 +27,10 @@ const TableComp = ({students, remove}) => {
     </tr>
   </thead>
   <tbody>
-    {students.map((student, index) => (
-        <tr key={index}>
+    {students && students.map((student) => (
+        <tr key={student.id}>
         <th scope="row">
-          {index}
+          {student.id}
         </th>
         <td>
         {student.name}

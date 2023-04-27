@@ -5,9 +5,39 @@ import './styles/App.css';
 
 
 const SmsApp = () => {
-    const [students, setStudent] = useState(JSON.parse(localStorage.getItem("students")));
+  // localStorage.setItem(
+  //   "students",
+  //   JSON.stringify([
+  //     {
+  //       id: "8a161aa2-d7ab-4e6c-a68c-3afd9da83550",
+  //       name: "Umid",
+  //       classNum: 3,
+  //       phone: "+998-90-039-39-88",
+  //       birthDate: "06.05.1995",
+  //     },
+  //     {
+  //       id: "1db84a8c-e8db-4fdc-aed5-e15cf41d61ab	",
+  //       name: "Ann",
+  //       classNum: 3,
+  //       phone: "+998-90-039-39-88",
+  //       birthDate: "06.05.1995",
+  //     },
+  //     {
+  //       id: "e7c86ea0-b47b-40d3-a104-da57d09b2bb5	  ",
+  //       name: "Umar",
+  //       classNum: 3,
+  //       phone: "+998-90-039-39-88",
+  //       birthDate: "06.05.1995",
+  //     },
+  //   ])
+  // );
+  if(!JSON.parse(localStorage.getItem("students"))){
+    localStorage.setItem(
+          "students",
+          JSON.stringify([]));
+  } 
 
-    localStorage.setItem("Student", JSON.stringify(students));
+  const [students, setStudent] = useState(JSON.parse(localStorage.getItem("students")));
 
     function addStudent (user) {
         const updDB = [...students, user];
@@ -16,7 +46,9 @@ const SmsApp = () => {
     }
 
     function removeStudent (id) {
-        setStudent(students.filter((student) => student.id !== id));
+        const updStds = students.filter((student) => student.id !== id);
+        localStorage.setItem("students", JSON.stringify(updStds));
+        setStudent(updStds);
     }
 
     return (

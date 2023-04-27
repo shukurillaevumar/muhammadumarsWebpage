@@ -9,6 +9,7 @@ const Header = (props) => {
     const [birthDate, setBirthDate] = useState("");
 
     function saveUser (e) {
+ 
       e.preventDefault();
         const user = {
             id: uuidv4(),
